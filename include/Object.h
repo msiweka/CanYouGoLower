@@ -22,6 +22,8 @@ protected:
 	virtual void moveLeft();
 	virtual void moveRight();
 
+	void checkGravity();
+
 	sf::Vector2f velocity;
 	float gravity;
 
@@ -35,9 +37,5 @@ protected:
 	sf::RenderWindow * _parentWindow;
 	sf::Color * mask;
 	sf::Sprite * sprite;
-
-private:
-
-	void checkGravity();
 };
 

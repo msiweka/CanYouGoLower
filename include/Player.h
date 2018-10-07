@@ -14,6 +14,8 @@ public:
 	void brake();
 	void jump();
 
+	void draw();
+
 private:
 
 	bool isOnGround();

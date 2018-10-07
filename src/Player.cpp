@@ -44,6 +44,32 @@ void Player::jump()
 	}
 }
 
+void Player::draw()
+{
+	if (sprite->getPosition().x + velocity.x >= 0 &&
+		sprite->getPosition().x + width + velocity.x <= _parentWindow->getSize().x) // checking the borders
+	{
+		sprite->move(velocity);
+	}
+	else if (sprite->getPosition().x + velocity.x < 0)
+	{
+		sprite->setPosition(0, sprite->getPosition().y);
+		
+		if (getBottomPosition() < 600)
+			sprite->move(0, velocity.y);
+	}
+	else if (sprite->getPosition().x + width + velocity.x > _parentWindow->getSize().x)
+	{
+		sprite->setPosition(_parentWindow->getSize().x - width, sprite->getPosition().y);
+
+		if (getBottomPosition() < 600)
+			sprite->move(0, velocity.y);
+	}
+
+	checkGravity();
+	_parentWindow->draw(*sprite);
+}
+
 bool Player::isOnGround()
 {
 	if (getBottomPosition() == 600)

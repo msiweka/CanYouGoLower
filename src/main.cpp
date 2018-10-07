@@ -24,6 +24,12 @@ int main()
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 				upPressed = true;
 
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				rightPressed = true;
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				leftPressed = true;
+
 			if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Right)
 				rightPressed = false;
 
@@ -32,12 +38,6 @@ int main()
 
 			if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Up)
 				upPressed = false;
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-				rightPressed = true;
-
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-				leftPressed = true;
 
 		} // end event loop
 
