@@ -17,9 +17,10 @@ protected:
 	// Function to set size of your object
 	// You must call it in every of yor child object after setting sprite
 	void setSize();
+	float getBottomPosition();
 
 	sf::Vector2f velocity;
-	const float gravity;
+	float gravity;
 
 	float width;
 	float height;

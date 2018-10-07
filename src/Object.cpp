@@ -25,8 +25,8 @@ Object::~Object()
 
 void Object::draw()
 {
-	checkGravity();
 	sprite->move(velocity);
+	checkGravity();
 	_parentWindow->draw(*sprite);
 }
 
@@ -36,11 +36,16 @@ void Object::setSize()
 	width = sprite->getGlobalBounds().width;
 }
 
+float Object::getBottomPosition()
+{
+	return sprite->getPosition().y + height;
+}
+
 void Object::checkGravity()
 {
 	int groundHeight = 600;
 
-	if ((sprite->getPosition().y + height) < groundHeight)
+	if (getBottomPosition() < groundHeight)
 	{
 		velocity.y += gravity;
 	}

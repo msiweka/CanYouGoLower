@@ -2,8 +2,7 @@
 
 Player::Player(sf::RenderWindow * parentWindow) :
 	Object(parentWindow),
-	jumpStrenght(20),
-	jumpSpeed(0)
+	jumpSpeed(0.7f)
 {
 	textureImg->loadFromFile("..\\sprites\\player.png");
 	texture->loadFromImage(*textureImg);
@@ -14,4 +13,10 @@ Player::Player(sf::RenderWindow * parentWindow) :
 
 Player::~Player()
 {
+}
+
+void Player::jump()
+{
+	if (getBottomPosition() == 600)
+		velocity.y = -jumpSpeed;
 }

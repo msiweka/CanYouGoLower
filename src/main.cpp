@@ -15,6 +15,10 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				mainWindow.close();
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				player.jump();
+
 		} // end event loop
 
 		player.draw();
