@@ -19,6 +19,7 @@ int main()
 
 		player.draw();
 		mainWindow.display();
+
 	} // end main loop
 	return 0;
 }

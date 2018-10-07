@@ -1,23 +1,18 @@
 #include "Object.h"
 
-void Object::draw()
-{
-	checkGravity();
-	_parentWindow->draw(*sprite);
-}
-
 Object::Object(sf::RenderWindow * parentWindow) :
-	velocity(0),
-	gravity(0.002f),
+	gravity(0.001f),
 	width(0),
 	height(0),
-	_parentWindow(parentWindow),
-	gravityMove(0)
+	_parentWindow(parentWindow)
 {
 	mask = new sf::Color(249, 17, 255);
 	textureImg = new sf::Image();
 	texture = new sf::Texture();
 	sprite = new sf::Sprite();
+
+	velocity.x = 0;
+	velocity.y = 0;
 }
 
 Object::~Object()
@@ -26,6 +21,13 @@ Object::~Object()
 	delete textureImg;
 	delete texture;
 	delete sprite;
+}
+
+void Object::draw()
+{
+	checkGravity();
+	sprite->move(velocity);
+	_parentWindow->draw(*sprite);
 }
 
 void Object::setSize()
@@ -40,12 +42,11 @@ void Object::checkGravity()
 
 	if ((sprite->getPosition().y + height) < groundHeight)
 	{
-		gravityMove += gravity;
-		sprite->move(velocity, gravityMove);
+		velocity.y += gravity;
 	}
 	else
 	{
 		sprite->setPosition(sprite->getPosition().x, 600 - height);
-		gravityMove = 0;
+		velocity.y = 0;
 	}
 }

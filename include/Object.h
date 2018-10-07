@@ -18,7 +18,7 @@ protected:
 	// You must call it in every of yor child object after setting sprite
 	void setSize();
 
-	float velocity;
+	sf::Vector2f velocity;
 	const float gravity;
 
 	float width;
@@ -33,7 +33,5 @@ protected:
 private:
 
 	void checkGravity();
-
-	float gravityMove;
 };
 
