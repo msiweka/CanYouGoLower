@@ -7,6 +7,11 @@ int main()
 	sf::RenderWindow mainWindow(sf::VideoMode(800, 600), "Can you go Lower??");
 	Player player(&mainWindow);
 
+	bool upPressed = false;
+	bool downPressed = false;
+	bool rightPressed = false;
+	bool leftPressed = false;
+
 	while (mainWindow.isOpen()) // main loop
 	{
 		mainWindow.clear(sf::Color::Black);
@@ -17,9 +22,40 @@ int main()
 				mainWindow.close();
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-				player.jump();
+				upPressed = true;
+
+			if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Right)
+				rightPressed = false;
+
+			if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Left)
+				leftPressed = false;
+
+			if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Up)
+				upPressed = false;
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				rightPressed = true;
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				leftPressed = true;
 
 		} // end event loop
+
+		// Check Key pressing
+
+		if (!leftPressed || !rightPressed)
+			player.brake();
+
+		if (upPressed)
+			player.jump();
+
+		if (leftPressed)
+			player.moveLeft();
+
+		if (rightPressed)
+			player.moveRight();
+
+		// Drawing objects
 
 		player.draw();
 		mainWindow.display();

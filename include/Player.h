@@ -9,10 +9,17 @@ public:
 	Player(sf::RenderWindow * parentWindow);
 	virtual ~Player();
 
+	virtual void moveLeft();
+	virtual void moveRight();
+	void brake();
 	void jump();
 
 private:
 
+	bool isOnGround();
+
 	float jumpSpeed;
+	float maxSpeed;
+	float acceleration;
 };
 

@@ -4,6 +4,7 @@ Object::Object(sf::RenderWindow * parentWindow) :
 	gravity(0.001f),
 	width(0),
 	height(0),
+	jumped(false),
 	_parentWindow(parentWindow)
 {
 	mask = new sf::Color(249, 17, 255);
@@ -41,6 +42,14 @@ float Object::getBottomPosition()
 	return sprite->getPosition().y + height;
 }
 
+void Object::moveLeft()
+{
+}
+
+void Object::moveRight()
+{
+}
+
 void Object::checkGravity()
 {
 	int groundHeight = 600;
@@ -53,5 +62,10 @@ void Object::checkGravity()
 	{
 		sprite->setPosition(sprite->getPosition().x, 600 - height);
 		velocity.y = 0;
+		if (jumped)
+		{
+			velocity.x = 0;
+			jumped = false;
+		}
 	}
 }

@@ -19,11 +19,16 @@ protected:
 	void setSize();
 	float getBottomPosition();
 
+	virtual void moveLeft();
+	virtual void moveRight();
+
 	sf::Vector2f velocity;
 	float gravity;
 
 	float width;
 	float height;
+
+	bool jumped;
 
 	sf::Texture * texture;
 	sf::Image * textureImg;
