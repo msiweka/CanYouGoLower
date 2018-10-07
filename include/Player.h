@@ -9,9 +9,9 @@ public:
 	Player(sf::RenderWindow * parentWindow);
 	virtual ~Player();
 
-	virtual void draw();
 private:
 
+	const float jumpStrenght;
 	float jumpSpeed;
 };
 

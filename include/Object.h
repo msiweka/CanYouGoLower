@@ -7,7 +7,7 @@ class Object
 public:
 
 	// Function to draw object on the screen
-	virtual void draw() = 0;
+	virtual void draw();
 
 protected:
 
@@ -19,7 +19,7 @@ protected:
 	void setSize();
 
 	float velocity;
-	float gravity;
+	const float gravity;
 
 	float width;
 	float height;
@@ -29,5 +29,11 @@ protected:
 	sf::RenderWindow * _parentWindow;
 	sf::Color * mask;
 	sf::Sprite * sprite;
+
+private:
+
+	void checkGravity();
+
+	float gravityMove;
 };
 

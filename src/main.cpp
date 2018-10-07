@@ -15,7 +15,6 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				mainWindow.close();
-
 		} // end event loop
 
 		player.draw();
