@@ -21,3 +21,9 @@ Object::~Object()
 	delete texture;
 	delete sprite;
 }
+
+void Object::setSize()
+{
+	height = sprite->getGlobalBounds().height;
+	width = sprite->getGlobalBounds().width;
+}

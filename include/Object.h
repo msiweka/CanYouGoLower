@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-// Avstract class for every drawable object
+// Parent class for every drawable object
 class Object
 {
 public:
@@ -13,6 +13,10 @@ protected:
 
 	Object(sf::RenderWindow * parentWindow);
 	virtual ~Object();
+
+	// Function to set size of your object
+	// You must call it in every of yor child object after setting sprite
+	void setSize();
 
 	float velocity;
 	float gravity;
