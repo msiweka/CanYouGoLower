@@ -1,6 +1,13 @@
 #pragma once
 #include "Object.h"
 
+
+enum DIRECTION
+{
+	LEFT,
+	RIGHT
+};
+
 // Class representate Player. Parent class Object
 class Player : public Object
 {
@@ -15,6 +22,8 @@ public:
 	void jump();
 
 	void draw();
+
+	DIRECTION getDirection();
 
 private:
 

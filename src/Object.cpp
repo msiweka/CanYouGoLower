@@ -4,7 +4,6 @@ Object::Object(sf::RenderWindow * parentWindow) :
 	gravity(0.001f),
 	width(0),
 	height(0),
-	jumped(false),
 	_parentWindow(parentWindow)
 {
 	mask = new sf::Color(249, 17, 255);
@@ -30,6 +29,12 @@ void Object::draw()
 
 	checkGravity();
 	_parentWindow->draw(*sprite);
+}
+
+std::map<POSITION, float> Object::getPosition()
+{
+	std::map<POSITION, float> pos;
+
 }
 
 void Object::setSize()
@@ -62,10 +67,5 @@ void Object::checkGravity()
 	{
 		sprite->setPosition(sprite->getPosition().x, groundHeight - height);
 		velocity.y = 0;
-		if (jumped)
-		{
-			velocity.x = 0;
-			jumped = false;
-		}
 	}
 }

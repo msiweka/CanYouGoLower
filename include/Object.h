@@ -1,6 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+enum POSITION
+{
+	LEFT_POS,
+	RIGHT_POS,
+	BOTTOM_POS,
+	TOP_POS
+};
+
 // Parent class for every drawable object
 class Object
 {
@@ -8,6 +16,8 @@ public:
 
 	// Function to draw object on the screen
 	virtual void draw();
+
+	std::map<POSITION, float> getPosition();
 
 protected:
 
@@ -17,7 +27,6 @@ protected:
 	// Function to set size of your object
 	// You must call it in every of yor child object after setting sprite
 	void setSize();
-	float getBottomPosition();
 
 	virtual void moveLeft();
 	virtual void moveRight();
@@ -29,8 +38,6 @@ protected:
 
 	float width;
 	float height;
-
-	bool jumped;
 
 	sf::Texture * texture;
 	sf::Image * textureImg;
